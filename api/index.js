@@ -11,6 +11,17 @@ const metricsRouter = require("./routes/metrics");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const cors = require("cors");
+
+// Use CORS middleware
+app.use(
+  cors({
+    origin: "http://localhost:3000/", // Replace with your frontend domain
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+  })
+);
+
 app.use(logger("dev"));
 
 // parse request body
